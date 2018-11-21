@@ -66,7 +66,7 @@ bot.on("message", async (message) => {
     xp[message.author.username].xp = curxp + xpAdd;
     if(nxtLvl <= xp[message.author.username].xp){
         xp[message.author.username].level = curlvl + 1;
-        bot.channels.get("514524213693120533").send(`GG ${user}, you just advanced to level ${xp[message.author.username].level}!`).then(msg => {msg.delete(5000)});
+        bot.channels.get("514524213693120533").send(`GG ${user}, you just advanced to level ${xp[message.author.username].level}!`);
     }
     let VIP = xp[message.author.username].level * 2100;
     let VIP2 = xp[message.author.username].level * 4800;
@@ -108,4 +108,3 @@ bot.on("message", async (message) => {
     
 });
 bot.login(process.env.BOT_TOKEN)
-  
