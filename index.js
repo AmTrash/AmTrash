@@ -76,25 +76,25 @@ bot.on("message", async (message) => {
         xp[message.author.username].level = 8;
         message.member.addRole (VIPr);
 
-        message.channel.send("Congratz you have been awarded the Rank VIP For reaching level 16").then;
+        message.channel.send("Congratz you have been awarded the Rank VIP For reaching level 16");
     }
     if(VIP <= xp[message.author.username].xp){
         xp[message.author.username].level = 16;
         message.member.addRole (VIP2r);
 
-        message.channel.send("Congratz you have been awarded the role VIP+ For reaching level 24").then;
+        message.channel.send("Congratz you have been awarded the role VIP+ For reaching level 24");
     }
     if(MVP <= xp[message.author.username].xp){
         xp[message.author.username].level = 24;
         message.member.addRole (MVPr);
 
-        message.channel.send("Congratz you have been awarded the level MVP For reaching level 32").then;
+        message.channel.send("Congratz you have been awarded the level MVP For reaching level 32");
     }
     if(MVP2 <= xp[message.author.username].xp){
         xp[message.author.username].level = 32;
         message.member.addRole (MVP2r);
 
-        message.channel.send("Congratz you have been awarded the level MVP+ For reaching level 32").then;
+        message.channel.send("Congratz you have been awarded the level MVP+ For reaching level 32");
     }
     fs.writeFile("./xp.json", JSON.stringify(xp),(err) => {
         if(err) console.log(err)
