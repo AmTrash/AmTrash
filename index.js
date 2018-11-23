@@ -46,6 +46,50 @@ bot.on("message", async (message) => {
 
         return message.channel.send(serverembed)
     }
+    if(cmd == `${prefix}ban`){
+        let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(bUser) return message.channel.send("Sorry, couldn't find the user");
+        let bReason = args.join(" ").slice(22)
+        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You do  not have the permission to ban Members");
+        if(bUser.hasPermission("ADMINSTRATOR")) return message.channel.send("Sorry you cannot ban an Adminstator")
+    
+        let BanEmbed = new Discord.RichEmbed()
+        .setDescription("**Ban**")
+        .setColor("RANDOM")
+        .addField("Banned user", `${bUser.id}`)
+        .addField("Banned by", `<@${message,author.id}>`)
+        .addField("Reason", `${bReason}`);
+    
+        let banChannel = message.guild.channels.find(`name`, "logs")
+        if(!banChannel) return message.channel.send("Can't find the channel called logs")
+        message.guild.member(bUser).ban(bReason);
+        BanChannel.send(BanEmbed)
+    
+    
+        return;
+    }
+    if(cmd == `${prefix}kick`){
+        let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(kUser) return message.channel.send("Sorry, couldn't find the user");
+        let kReason = args.join(" ").slice(22)
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("You do  not have the permission to kick Members");
+        if(kUser.hasPermission("ADMINSTRATOR")) return message.channel.send("Sorry you cannot kick an Adminstator")
+    
+        let kickEmbed = new Discord.RichEmbed()
+        .setDescription("**Kick**")
+        .setColor("RANDOM")
+        .addField("Kicked user", `${kUser.id}`)
+        .addField("Kick by", `<@${message,author.id}>`)
+        .addField("Reason", `${kReason}`);
+    
+        let kickChannel = message.guild.channels.find(`name`, "logs")
+        if(!kickChannel) return message.channel.send("Can't find the channel called logs")
+        message.guild.member(kUser).kick(kReason);
+        kickChannel.send(kickEmbed)
+    
+    
+        return;
+    }
     let xpAdd = Math.floor(Math.random() * 7) + 8;
     console.log(xpAdd)
 
