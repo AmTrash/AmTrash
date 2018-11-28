@@ -1,4 +1,4 @@
-const botconfig = require("./botconfig.json")
+const prefix = "!";
 const Discord = require("discord.js")
 const fs = require("fs");
 const db = require(`quick.db`);
